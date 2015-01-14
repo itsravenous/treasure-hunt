@@ -1,0 +1,23 @@
+
+<audio src="snd/launch.mp3"></audio>
+
+<script src="../../common/js/jquery.min.js"></script>
+<script>
+	function check () {
+		$.getJSON('launch-check.php', function (data) {
+			console.log(data);
+			if (data.count == 2)
+				launch();
+			else
+				setTimeout(check, 500);
+		});
+	}
+	
+	function launch() {
+		aud.play();
+	}
+	
+	// Init
+	var aud = document.querySelector('audio');
+	check();
+</script>

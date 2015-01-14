@@ -1,0 +1,97 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+html {
+	display: table;
+	background: #0c1117;
+}
+body {
+	display: table-row;
+	vertical-align: middle;
+}
+.scene {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.msgs {
+	position: relative;
+	max-width: 30em;
+	margin: 1em auto;
+	text-align: center;
+}
+.msg {
+	position: absolute;
+	left: 0; right: 0;
+	font-style: italic;
+	color: #fff;
+	
+	opacity: 0;
+	-webkit-transition: opacity 1s;	
+}
+.msg.is-shown {
+	opacity: 1;
+}
+
+
+.gate {
+	display: inline-block;
+	position: relative;
+	width: 324px;
+	height: 463px;
+	overflow: hidden;
+	-webkit-perspective: 1000;
+	background: url('../img/gate.png') no-repeat;
+	cursor: pointer;
+	opacity: 0.5;
+	-webkit-transition: opacity 2s;
+}
+.is-ready .gate {
+	opacity: 1;
+}
+
+.gate .clue {
+	position: absolute;
+	left: 88px;
+    top: 160px;
+    width: 160px;
+    opacity: 0;
+	-webkit-transition: opacity 4s;
+    -webkit-animation: hover 2s infinite; /* Safari and Chrome */
+    -webkit-animation-timing-function: ease-in-out;
+}
+.is-open .clue {
+	opacity: 1;
+}
+@-webkit-keyframes hover /* Safari and Chrome */
+{
+0%   { -webkit-transform: translate3d(0, 10px, 0); }
+50%  { -webkit-transform: translate3d(0, -10px, 0); }
+100%  { -webkit-transform: translate3d(0, 10px, 0); }
+}
+    
+    
+.gate-l,
+.gate-r {
+	position: relative;
+	float: left;
+	width: 162px;
+	height: 463px;
+	background: url('../img/doors.png') no-repeat;
+	-webkit-transition: -webkit-transform 2s ease-in-out;
+	-webkit-transform-origin: 68px 0;
+}
+.gate-r {
+	background-position: 100%;
+	-webkit-transform-origin: 104px 0;
+}
+
+.is-open .gate-l {
+	-webkit-transform: rotate3d(0, 1, 0, -120deg);
+}
+.is-open .gate-r {
+	-webkit-transform: rotate3d(0, 1, 0, 120deg);
+}

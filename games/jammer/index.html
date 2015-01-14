@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Jamming Signal!!</title>
+		<meta name="viewport" content="width=device-width,user-scalable=yes"/>
+
+		<style>
+			html, body {
+				height: 100%;
+				margin: 0; padding: 0;
+				font-family: sans-serif;
+				-webkit-user-select: none;
+				overflow: hidden;
+			}
+			body {
+				background: url('../img/danger.jpg');
+				-webkit-transition: all 0.5s;
+			}
+
+			h1 {
+				margin: 0 0 6px 0;
+				padding: 0;
+				font-size: 18px;
+			}
+			p {
+				margin: 10px 0; padding: 0;
+			}
+			.einstein {
+				float: right;
+				max-width: 100px;
+				margin: 0 10px
+			}
+
+			.button {
+				display: block;
+				padding: 10px;
+				border-radius: 3px;
+				background: #333;
+				color: #fff;
+				text-align: center;
+				font-weight: bold;
+				text-decoration: none;
+			}
+
+			.message {
+				position: absolute;
+				left: 0; top: 0; right: 0; bottom: -8px;
+				padding: 10px;
+				background: url('../ball/img/danger.jpg');
+				border-bottom: 8px solid #666;
+				color: #fff;
+				text-shadow: 0 0 3px #000, 0 0 5px #000, 0 0 10px #000;
+				-webkit-transform: translate3d(0, -100%, 0);
+				-webkit-transition: all 0.5s;
+			}
+			.message.is-shown {
+				-webkit-transform: translate3d(0, 0, 0);
+				z-index: 999;
+			}
+			
+			.photo {
+				text-align: center;
+			}
+			.device {
+				width: 300px;
+			}		
+
+		</style>
+
+	</head>
+	<body>
+
+		<div class="message intro is-shown">
+			<img class="einstein" src="../../common/img/einstein.jpg" />
+			<h1> Hello again! </h1>
+			<p>
+				Don't look so worried! I just need a quick favour! I'm trying to play some songs on my WIFI-enabled music player,
+				but my lab assistant doesn't like my taste in music, so she's jamming my signal.
+			</p>
+			<p>
+				Could you track down her jamming device and turn it off? I'd be most obliged. Then I think if you follow the sound of music,
+				you should find a little something to help you on your way... The jamming device looks something like this:
+			</p>
+			<a class="button">See picture</a>
+		</div>
+		
+		<div class="message photo">
+			<h1> Jamming device </h1>
+			<img class="device" alt="" src="img/device.jpg" />
+		</div>
+
+
+		<!-- Game script -->
+		<script type="text/javascript">
+			document.querySelector('.button').addEventListener('click', function (e) {
+				document.querySelector('.intro').classList.remove('is-shown');
+				document.querySelector('.photo').classList.add('is-shown');
+			});
+		</script>
+
+	</body>
+</html>

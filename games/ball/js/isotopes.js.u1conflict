@@ -21,30 +21,27 @@ var repeater;
 var level = 0;
 var levels = [
 	{
-		ballColor: 'red'
+		holeX: 100,
+		holeY: 100
 	},
 	{
-		ballColor: 'green'
+		holeX: 50,
+		holeY: 50
 	},
 	{
-		ballColor: 'blue'
+		holeX: 200,
+		holeY: 250
 	}
 ];
 
 // Hole config
-var redHole = document.getElementById('hole-red');
-var greenHole = document.getElementById('hole-green');
-var blueHole = document.getElementById('hole-blue');
-var holeX = {}
-var holeY = {}
-holeX['red'] = redHole.offsetLeft;
-holeY['red'] = redHole.offsetTop;
-holeX['green'] = greenHole.offsetLeft;
-holeY['green'] = greenHole.offsetTop;
-holeX['blue'] = blueHole.offsetLeft;
-holeY['blue'] = blueHole.offsetTop;
-holeWidth = redHole.clientWidth;
-holeHeight = redHole.clientHeight;
+var hole = document.getElementById('hole');
+var holeX;
+var holeY;
+var holeWidth = hole.clientWidth;
+var holeHeight = hole.clientHeight;
+
+
 
 
 // Ball config
@@ -121,45 +118,25 @@ function boundingBoxCheck() {
 	}
 	
 	// Check if ball over hole
-	if ( x > holeX[levels[level].ballColor] && x + ballWidth < holeX[levels[level].ballColor] + holeWidth && y > holeY[levels[level].ballColor] && y + ballHeight < holeY[levels[level].ballColor] + holeHeight ) {
+	if ( x > holeX && x + ballWidth < holeX + holeWidth && y > holeY && y + ballHeight < holeY + holeHeight ) {
 		//clearInterval(repeater);
-		level ++;
 		if (level >= levels.length ) {
 			clearInterval(repeater);
 			showMessage('congrats');
 		} else {
-			if ( level == 1 ) {
-				alert('Well done! next highly unstable element coming up...');
-			} else if ( level == 2 ) {
-				alert('Great! Just one more crazy compound to put away...');
-			}
+			alert('well done! next level coming up...');
+			level ++;
 			setupLevel(level);
-		}
-	} else {
-		var inRed = x > holeX['red'] && x + ballWidth < holeX['red'] + holeWidth && y > holeY['red'] && y + ballHeight < holeY['red'] + holeHeight;
-		var inGreen = x > holeX['green'] && x + ballWidth < holeX['green'] + holeWidth && y > holeY['green'] && y + ballHeight < holeY['green'] + holeHeight;
-		var inBlue = x > holeX['blue'] && x + ballWidth < holeX['blue'] + holeWidth && y > holeY['blue'] && y + ballHeight < holeY['blue'] + holeHeight;
-		if (
-			(levels[level].ballColor == 'red' && (inGreen || inBlue)) ||
-			(levels[level].ballColor == 'green' && (inRed || inBlue)) ||
-			(levels[level].ballColor == 'blue' && (inGreen || inRed))
-		) {
-			alert('Kaboom!!! I told you not to mix the colours up! Try again, and be more careful this time...');
-			level = 0;
-			setupLevel(0);
 		}
 	}
 }
 
 // Function to set up hole position for level
 function setupLevel (level) {
-	x = 80;
-	y = 200;
-	
-	ball.classList.remove('red');
-	ball.classList.remove('green');
-	ball.classList.remove('blue');
-	ball.classList.add(levels[level].ballColor);
+	holeX = levels[level].holeX
+	holeY = levels[level].holeY
+	hole.style.left = holeX + 'px';
+	hole.style.top = holeY + 'px';
 }
 
 // Function to show message screens
@@ -184,7 +161,4 @@ photoButton.addEventListener('click', function(e) {
 });
 
 // Init
-window.onload = function (e) {
-	document.querySelector('html').classList.add('is-loaded');
-	showMessage('intro');
-}
+showMessage('intro');

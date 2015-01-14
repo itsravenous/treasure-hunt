@@ -9,32 +9,18 @@
 	</head>
 	<body>
 
-		<div class="preload">
-			<img src="img/red.png" />
-			<img src="img/green.png" />
-			<img src="img/blue.png" />
-		</div>
-
 		<div id="debug">
 
 		</div>
 
-		<div class="hole" id="hole-red"></div>
-		<div class="hole" id="hole-green"></div>
-		<div class="hole" id="hole-blue"></div>
+		<div class="hole" id="hole"></div>
 
 		<div class="ball" id="ball"></div>
 
 		<div class="message" id="intro">
-			<img class="einstein" alt="" src="../../common/img/einstein.jpg" />
-			<h1> Hallo! </h1>
+			<h1> Help! </h1>
 			<p>
-				I know, I know, you were just in Middle-Earth. I realise you're on a magical quest or something, but I had to pull you through time to help me - I saw
-				your skills in action back there - you're the only ones who can help.
-			</p>
-			<p>
-				I was trying out a new experiment, and some unstable elements escaped from their holding columns. I need you to put them back!
-				Just make sure you match the colours.
+				Message about unstable isotopes here.. get them into their holding cells, etc.
 			</p>
 			<a href="#" class="button">Go!</a>
 		</div>
@@ -57,7 +43,7 @@
 		
 		<div class="message" id="photo">
 			<h1> Mystery photo! </h1>
-			<img alt="" src="../../common/photos/z02.jpeg" />
+			<img alt="" src="../../common/photos/router.jpg" />
 		</div>
 
 
